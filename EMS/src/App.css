@@ -1,0 +1,21 @@
+
+.txt-main {
+    font-family: 'Exo', sans-serif;
+}
+
+.Title{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+.login--form{
+display: flex;
+justify-content: center ;
+align-items: center;
+margin-top: 40px;
+}
+.login-in-button{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
