@@ -1,8 +1,15 @@
+import {Text } from '@mantine/core';
+import data from './data.js'
+import Card from './Card.jsx';
 
-function Hierarchy() {
+
+
+const Hierarchy = () => {
   return (
-    <div>The Roles Hierarchy</div>
-  )
-}
+    <div className="org-tree">
+       <h1>This is Our employees role heirarchial structure</h1>
+    </div>
+  );
+};
 
-export default Hierarchy
+export default Hierarchy;
