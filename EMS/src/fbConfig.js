@@ -1,6 +1,6 @@
-import firebase from "firebase/compat/app"
-import "firebase/compat/database"
-
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getDatabase } from 'firebase/database';
 const firebaseConfig = {
   apiKey: "AIzaSyDUP47aqYsohrJiSuN8ISj2tzLCCC52IjA",
   authDomain: "employee-management-syst-b4dc8.firebaseapp.com",
@@ -10,8 +10,9 @@ const firebaseConfig = {
   appId: "1:333842832842:web:d7601f9f49ad5b0dab0333"
 };
 
- firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
- export const dataref = firebase.database();
+export const employeeDb = getFirestore(app);
 
- export default firebase
+
+

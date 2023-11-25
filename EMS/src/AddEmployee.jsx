@@ -1,98 +1,107 @@
 import { Input, Title, Fieldset, Button, Alert } from "@mantine/core";
 import { useState } from "react";
-import { dataref } from "./fbConfig";
 import { IconInfoCircle } from '@tabler/icons-react';
+import { addDoc, collection, getDocs } from "firebase/firestore";
+import { employeeDb } from "./fbConfig";
+import { useParams} from "react-router-dom";
+import { useEffect } from "react";
 
 function AddEmployee() {
-const [name, setName]= useState({
-  name:"",
-  role:"",
-  address:"",
-  salary:""
-})
+const [name, setName]= useState("")
+const [address, setAddress]= useState("")
+const [salary, setSalary]= useState()
+const [role, setRole]= useState("")
+
+const [datas, setDatas]= useState([])
+
+
+const {id} = useParams();
+
+
+
+const employeesCollection = collection(employeeDb, "Employee")
+
+
 const [alert, setAlert] = useState(null);
-
-const handleSubmit = () => {
-  const icon = <IconInfoCircle />;
-  if (name.name!=="") {
-     dataref.ref().child("employees").push(name);
-    setName({
-     name:"",
-     role:"",
-     address:"",
-     salary:""
-    })
-    setAlert(
-      <Alert variant="light" color="blue" title="Employee added successfully" icon={icon}>
-        Employee added successfully!
-      </Alert>
-    );
-  }
-else{
-  setAlert(
-    <Alert variant="light" color="red" title="unable to add employee" icon={icon}>
-    "The addition of an employee requires the specification of their name. Kindly provide the employee's name to proceed."
-    </Alert>
-  );
-}}
-
-
+const onSubmitEmployee = async () => {
+  if(name && role !== "" ){
+    try {
+      await addDoc(employeesCollection, {
+        Name: name,
+        Role: role,
+        Salary: salary,
+        Address: address,
+      });
   
-  const handleChange=(e)=>{
-    setName(prevName=>{
-      return{
-        ...prevName, [e.target.name]:e.target.value
-      }
+      // Reset form values or perform any other actions after successful submission
+      setName("");
+      setRole("");
+      setAddress("");
+      setSalary("");
+  
+      // Display a success message or redirect to another page
+    setAlert(<Alert>
+      successfully Added
+      </Alert>) 
+    } catch (err) {
+     setAlert(<Alert>
+      there is an error when adding the Employee
+      </Alert>) 
     }
-
-    );
+  }else{
+   setAlert(<Alert>Name and role field cannot be empty</Alert>)
   }
-
+ 
+};
+   
+ 
   return (
     <div className="flex justify-center p-9">
    
-      <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+      <form onSubmit={(e) => { e.preventDefault(); onSubmitEmployee();}}>
         <Title order={1}>Add new employee to our company</Title>
         <Fieldset legend="employee information">
           <div>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="Name">Name</label>
             <Input
-             value={name.name}
-             name="name"
-             onChange={handleChange}
+             value={name}
+             name="Name"
+             onChange={(e)=>setName(e.target.value)}
              placeholder="Employees name"  />
           </div>
           <div>
-            <label htmlFor="role">Role</label>
+            <label htmlFor="Role">Role</label>
             <Input
-            value={name.role}
-            name="role"
-            onChange={handleChange}
+            value={role}
+            name="Role"
+            onChange={(e)=>setRole(e.target.value)}
             placeholder="Employees role"   />
           </div>
           <div>
-            <label htmlFor="address">Address</label>
+            <label htmlFor="Address">Address</label>
             <Input 
-            value={name.address}
-            name="address"
-            onChange={handleChange} 
+            value={address}
+            name="Address"
+            onChange={(e)=>setAddress(e.target.value)}
             placeholder="Employees address" />
           </div>
           <div>
-            <label htmlFor="salary">Salary</label>
+            <label htmlFor="Salary">Salary</label>
             <Input
-            value={name.salary}
-            name="salary"
-            onChange={handleChange}
+            value={salary}
+            name="Salary"
+            onChange={(e)=>setSalary(e.target.value)}
             placeholder="Employees salary"  />
           </div>
           <div className="flex justify-center p-1">
-            <Button onClick={handleSubmit}>Submit</Button>
+            <Button type="submit" >Submit</Button>
           </div>
           <div>
-          {alert}</div>
+          {alert}
+          </div>
         </Fieldset>
       </form>
+    
     </div>
   );
 }

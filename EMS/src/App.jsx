@@ -8,6 +8,7 @@ import CreateRole from "./CreateRole";
 import Home from "./Home";
 import ShowEmployee from "./ShowEmployee";
 import Hierarchy from "./Hierarchy";
+import Update from "./Update";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="addemployee" element={<AddEmployee />}></Route>
             <Route path="createrole" element={<CreateRole />}></Route>
             <Route path="showemployee" element={<ShowEmployee />}></Route>
+            <Route path="update/:id" element={<AddEmployee />}></Route>
             <Route path="hierarchy" element={<Hierarchy />}></Route>
           </Route>
         </Routes>
