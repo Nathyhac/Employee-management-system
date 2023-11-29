@@ -1,6 +1,5 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
-import { getDatabase } from 'firebase/database';
 const firebaseConfig = {
   apiKey: "AIzaSyDUP47aqYsohrJiSuN8ISj2tzLCCC52IjA",
   authDomain: "employee-management-syst-b4dc8.firebaseapp.com",

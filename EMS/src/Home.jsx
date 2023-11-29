@@ -1,16 +1,30 @@
-import {Title, Image} from "@mantine/core"
+import { Title, Image, Text } from "@mantine/core";
 function Home() {
   return (
-    <div className=" ml-0">
-    <Image
-    radius="md"
-    src="./../public/Perago.jpg"
-  />
-    <Title order={1} >Perago systems</Title>
-    <Title order={2}>Employee management system</Title>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere cupiditate beatae repudiandae dolore blanditiis esse eveniet optio aspernatur velit, reiciendis nesciunt dolorem quam et rerum minima asperiores accusantium aliquam tempora dignissimos maxime amet? Distinctio repellendus ipsa qui quidem eum quaerat tenetur temporibus asperiores nam quia, nisi tempore et, voluptatibus quasi itaque corrupti quo iusto assumenda sunt nesciunt vitae omnis similique est. Animi quis iusto esse deleniti harum minus placeat, suscipit maiores et explicabo quisquam, expedita sit omnis ratione repellendus? Odio quas provident voluptatibus a suscipit natus non maiores maxime ex. Error quam officia ut non eum possimus dicta voluptatum quibusdam ipsam, accusamus officiis animi consequatur eligendi odio placeat facilis alias aliquam. Est omnis laborum necessitatibus, debitis corporis doloribus! Temporibus praesentium ab non mollitia reiciendis eos ex aperiam? Quibusdam architecto eaque officia eos mollitia minus corrupti ea eligendi obcaecati veniam provident exercitationem similique eius odio, molestias ad quod a totam tenetur voluptas rem deserunt. Dolore aliquam odio ducimus quos blanditiis temporibus consequatur alias officiis, illo possimus corporis. Blanditiis fugit minima dolore quam. Sunt assumenda facilis reiciendis eum dolor. Laborum possimus, quas sapiente tempora laboriosam accusamus aspernatur voluptate neque consectetur minus ut molestiae quaerat, distinctio quia sint similique facere. Iste, necessitatibus commodi.</p>
+    <div className="">
+      <Image radius="md" src="./../public/Perago.jpg" />
+      <Title order={1}>Perago systems</Title>
+      <Title order={2}>Employee management system</Title>
+      <Text>
+        An Employee Management System in a company, like the one we use, is a
+        super useful tool for handling things related to employees. It's like a
+        hub where we can easily add new employees, remove old ones, and update
+        everyone's information. From the time someone joins the company to
+        assigning them different roles and making updates as needed, the system
+        makes sure everything runs smoothly. Everyone can use it – not just the
+        HR folks but also managers and regular employees. The system is designed
+        to be simple, so HR people can quickly add or remove employees, change
+        details, and assign roles, making the company more flexible. There's
+        also a cool feature that shows the company's structure, so everyone can
+        see who's in charge and how the team is set up. Whether it's a small
+        business or a big one, the system works for everyone. Small companies
+        can use it to organize HR stuff, and bigger ones can manage lots of
+        different roles and employees easily. Overall, it helps the company run
+        better, follow rules, and gives everyone a smoother work experience,
+        making teamwork and progress easier.
+      </Text>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

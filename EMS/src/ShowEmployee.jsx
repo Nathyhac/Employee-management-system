@@ -19,15 +19,14 @@ function ShowEmployee() {
           id: doc.id,
         }));
         setDatas(filteredData)
-      }  
-      catch(err){
+      }catch(err){
      console.log(err)
       }
     }
     getEmployeeList();
-  }, [employeesCollection]);  
+  }, []);  
 
-
+//console.log(datas)
 
   const deleteEmployee = async(id) => { 
      const EmployeeDoc = doc(employeeDb,"Employee", id);
@@ -60,7 +59,7 @@ function ShowEmployee() {
                <Table.Td>{employee.Address}</Table.Td>
                <Table.Td>{employee.Salary}</Table.Td>
    
-               <Link to="update/:id">
+               <Link to={`/update/${employee.id}`}>
                <Table.Td >
                <Button
                  variant="gradient"

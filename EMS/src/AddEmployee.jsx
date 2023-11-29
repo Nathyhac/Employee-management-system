@@ -1,7 +1,7 @@
 import { Input, Title, Fieldset, Button, Alert } from "@mantine/core";
 import { useState } from "react";
 import { IconInfoCircle } from '@tabler/icons-react';
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection,  } from "firebase/firestore";
 import { employeeDb } from "./fbConfig";
 import { useParams} from "react-router-dom";
 import { useEffect } from "react";
@@ -15,7 +15,6 @@ const [role, setRole]= useState("")
 const [datas, setDatas]= useState([])
 
 
-const {id} = useParams();
 
 
 
@@ -33,13 +32,11 @@ const onSubmitEmployee = async () => {
         Address: address,
       });
   
-      // Reset form values or perform any other actions after successful submission
       setName("");
       setRole("");
       setAddress("");
       setSalary("");
   
-      // Display a success message or redirect to another page
     setAlert(<Alert>
       successfully Added
       </Alert>) 

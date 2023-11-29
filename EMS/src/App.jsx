@@ -20,13 +20,13 @@ function App() {
             <Route path="addemployee" element={<AddEmployee />}></Route>
             <Route path="createrole" element={<CreateRole />}></Route>
             <Route path="showemployee" element={<ShowEmployee />}></Route>
-            <Route path="update/:id" element={<AddEmployee />}></Route>
+            <Route path="update/:id" element={<Update />}></Route>
             <Route path="hierarchy" element={<Hierarchy />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
     </MantineProvider>
-  );
+  );ESDA
 }
 
 export default App;
