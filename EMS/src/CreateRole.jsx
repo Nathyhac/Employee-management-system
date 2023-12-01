@@ -2,9 +2,12 @@ import { Input, Title, Fieldset, Button, Alert } from "@mantine/core";
 import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
 import { employeeDb } from "./fbConfig";
+import { IconInfoCircle } from '@tabler/icons-react';
+
 
 function AddEmployee() {
-   
+  const icon = <IconInfoCircle />;
+
   
   const [roles, setRoles]= useState('')
   const [parentRole, setParentRole]= useState('')
@@ -20,13 +23,14 @@ function AddEmployee() {
       }
       try {
         await addDoc(RolesCollection, {
+          
           Role:roles,
-          parentRole:parentRole
+          ParentRole:parentRole
         });
         setRoles("");
         setParentRole("")
     
-      setAlert(<Alert>
+      setAlert(<Alert withCloseButton closeButtonLabel="Dismiss" variant="light" color="green" title="Role added" icon={icon}>
         successfully Added
         </Alert>) 
       } catch (err) {
@@ -35,7 +39,7 @@ function AddEmployee() {
         </Alert>) 
       }
     }else{
-     setAlert(<Alert>Name and role field cannot be empty</Alert>)
+     setAlert(<Alert  withCloseButton closeButtonLabel="Dismiss" variant="light" color="red" title="empty field" icon={icon}>Name and role field cannot be empty</Alert>)
     }
    
   };
@@ -51,14 +55,14 @@ function AddEmployee() {
             <label htmlFor="name">Role Name</label>
             <Input name="name" placeholder="Role Name" 
             value={roles}
-            onChange={(e)=>setRoles(e.target.value)
+            onChange={(e)=>setRoles(e.target.value.toUpperCase())
             }/>
           </div>
           <div>
             <label htmlFor="role">Parent Role</label>
             <Input name="role" placeholder="Parent Role" 
             value={parentRole}
-            onChange={(e)=>setParentRole(e.target.value)}
+            onChange={(e)=>setParentRole(e.target.value.toUpperCase())}
 
             />
           </div>
@@ -66,8 +70,11 @@ function AddEmployee() {
             <Button type="submit">Submit</Button>
           </div>
         </Fieldset>
+        <div>
+        {alert}
+        </div>
       </form>
-      <div>{alert}</div>
+     
     </div>
   );
 }

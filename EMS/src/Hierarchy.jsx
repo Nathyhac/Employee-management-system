@@ -1,9 +1,12 @@
 import { collection, getDocs } from "firebase/firestore";
 import { employeeDb } from "./fbConfig.js";
 import { useEffect, useState } from "react";
-import { Tree, TreeNode } from 'react-organizational-chart';
+import { Tree, TreeNode } from "react-organizational-chart";
+import { Title } from "@mantine/core";
 
 const Hierarchy = () => {
+
+  
   const [rolesData, setRolesData] = useState([]);
   const RolesCollection = collection(employeeDb, "Roles");
 
@@ -15,7 +18,7 @@ const Hierarchy = () => {
           id: doc.id,
           ...doc.data(),
         }));
-        console.log(filteredRoles);
+        //console.log(filteredRoles);
         setRolesData(filteredRoles);
       } catch (err) {
         console.log(err);
@@ -24,16 +27,23 @@ const Hierarchy = () => {
     getRolesList();
   }, []);
 
-  const renderTree = (node) => {
-    if (!node) {
-      return null;
+  const generateHierarchy = (parentRole) => {
+    const children = rolesData.filter((role) => role.ParentRole === parentRole);
+
+    if (children === 0) {
+      return null
     }
 
     return (
-      <Tree key={node.id} lineWidth={'2px'} lineColor={'green'} lineBorderRadius={'10px'} label={node.Role}>
-        {node.children && node.children.map(child => (
-          <TreeNode key={child.id} label={child.Role}>
-            {renderTree(child)}
+      <Tree 
+        key={parentRole} 
+        lineWidth={"6px"}
+        lineColor={"green"}
+        label={parentRole==="CEO"?"CEO":""}
+        >
+        {children.map((childRole) => (
+          <TreeNode key={childRole.id} label={childRole.Role}>
+                 {generateHierarchy(childRole.Role)} 
           </TreeNode>
         ))}
       </Tree>
@@ -41,11 +51,12 @@ const Hierarchy = () => {
   };
 
   return (
-    <div>
-      <div>This is our organization's hierarchy</div>
-      {rolesData.length > 0 && rolesData.map((role) => renderTree(role))}
+    <div className="m-0 ">
+      <Title order={1} className="flex justify-center">This is our organization's hierarchy</Title>
+             <div className="bg-slate-400 align-center ml-8" >{generateHierarchy("CEO")}</div>
     </div>
   );
 };
+
 
 export default Hierarchy;

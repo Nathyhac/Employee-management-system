@@ -20,6 +20,7 @@ const [datas, setDatas]= useState([])
 
 const employeesCollection = collection(employeeDb, "Employee")
 
+const icon = <IconInfoCircle />;
 
 const [alert, setAlert] = useState(null);
 const onSubmitEmployee = async () => {
@@ -37,16 +38,18 @@ const onSubmitEmployee = async () => {
       setAddress("");
       setSalary("");
   
-    setAlert(<Alert>
+    setAlert(<Alert withCloseButton closeButtonLabel="Dismiss" variant="light" color="green" title={`${name} is succesfuly added`} icon={icon}>
       successfully Added
       </Alert>) 
     } catch (err) {
-     setAlert(<Alert>
+     setAlert(<Alert withCloseButton closeButtonLabel="Dismiss" variant="light" color="red" title="error" icon={icon}>
       there is an error when adding the Employee
       </Alert>) 
     }
   }else{
-   setAlert(<Alert>Name and role field cannot be empty</Alert>)
+   setAlert(<Alert withCloseButton closeButtonLabel="Dismiss" variant="light" color="red" title="Empty field" icon={icon}>
+   Name and role field cannot be empty
+   </Alert>)
   }
  
 };

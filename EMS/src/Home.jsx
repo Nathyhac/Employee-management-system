@@ -6,22 +6,31 @@ function Home() {
       <Title order={1}>Perago systems</Title>
       <Title order={2}>Employee management system</Title>
       <Text>
-        An Employee Management System in a company, like the one we use, is a
-        super useful tool for handling things related to employees. It's like a
-        hub where we can easily add new employees, remove old ones, and update
-        everyone's information. From the time someone joins the company to
-        assigning them different roles and making updates as needed, the system
-        makes sure everything runs smoothly. Everyone can use it – not just the
-        HR folks but also managers and regular employees. The system is designed
-        to be simple, so HR people can quickly add or remove employees, change
-        details, and assign roles, making the company more flexible. There's
-        also a cool feature that shows the company's structure, so everyone can
-        see who's in charge and how the team is set up. Whether it's a small
-        business or a big one, the system works for everyone. Small companies
-        can use it to organize HR stuff, and bigger ones can manage lots of
-        different roles and employees easily. Overall, it helps the company run
-        better, follow rules, and gives everyone a smoother work experience,
-        making teamwork and progress easier.
+        Perago is a dynamic software solutions company that thrives on
+        innovation and excellence. As a forward-thinking technology partner, we
+        are dedicated to transforming businesses and maximizing their potential
+        through cutting-edge software solutions. At Perago, we pride ourselves
+        on our ability to deliver tailor-made software solutions that precisely
+        meet the unique needs of our clients. Our team of highly skilled and
+        passionate experts is committed to understanding your business goals and
+        crafting innovative software solutions that drive growth and efficiency.
+        We are driven by a relentless pursuit of excellence, always pushing the
+        boundaries of what is possible in software development. Our agile and
+        iterative approach ensures that we deliver high-quality solutions on
+        time and within budget, providing our clients with a competitive edge in
+        the fast-paced digital landscape. Collaboration is at the heart of
+        everything we do. We believe in building strong partnerships with our
+        clients, working closely with them to co-create software solutions that
+        address their specific challenges. Our transparent and open
+        communication ensures that we are always aligned with our clients'
+        vision and objectives. At Perago, we embrace emerging technologies and
+        stay ahead of the curve. From web and mobile applications to cloud
+        computing and artificial intelligence, we leverage the latest tools and
+        methodologies to deliver innovative solutions that drive digital
+        transformation. Choose Perago as your software solutions partner and
+        experience the power of technology unleashed to transform your business
+        and propel you towards success. Together, we will embark on a journey of
+        innovation, collaboration, and growth.
       </Text>
     </div>
   );

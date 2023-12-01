@@ -56,6 +56,7 @@ const employeeRefCollection = collection(employeeDb, "Employee");
 
 const [alert, setAlert] = useState(null);
 const onSubmitEmployee = async () => {
+  const icon = IconInfoCircle
   if(name && role !== "" ){
     <Alert>Fill the name and the role</Alert>
 
@@ -74,11 +75,11 @@ const onSubmitEmployee = async () => {
         setAddress("");
         setSalary("");
     
-      setAlert(<Alert>
+      setAlert(<Alert color="green">
         successfully Added
         </Alert>) 
       } catch (err) {
-       setAlert(<Alert>
+       setAlert(<Alert color="red">
         there is an error when adding the Employee
         </Alert>) 
       }
